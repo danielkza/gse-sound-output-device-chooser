@@ -273,7 +273,11 @@ const SoundDeviceChooserBase = new Lang.Class({
     },
 
     _setDeviceActiveProfile: function(device) {
+        if (!device.uidevice.port_name)
+            return;
+
         let activeProfile = device.uidevice.get_active_profile();
+
         if(activeProfile && device.activeProfile != activeProfile) {
             device.activeProfile = activeProfile;
 
